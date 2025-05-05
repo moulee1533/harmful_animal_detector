@@ -20,14 +20,23 @@ An AI-powered real-time harmful animal detection and alert system using YOLOv8, 
 ## 📁 Project Structure
 
 harmful_animal_detector/
+
 ├── app.py # Flask backend and video stream
+
 ├── detector.py # YOLOv8 model and detection logic
+
 ├── templates/
+
 │ └── index.html # Frontend UI
+
 ├── static/
+
 │ └── script.js # WebSocket frontend logic
+
 ├── utils/
+
 │ └── email_alert.py # Email sending functionality
+
 ├── requirements.txt # Dependencies
 
 
@@ -37,11 +46,13 @@ harmful_animal_detector/
    ```bash
    git clone https://github.com/moulee1533/harmful_animal_detector.git
    cd harmful_animal_detector
-   Install Requirements
+
+2. **Install Requirements**
 
 
    pip install -r requirements.txt
-   Download YOLOv8 Model
+   
+3. **Download YOLOv8 Model**
 
 **before install any requirements create a vitrual enviorment**
 
@@ -51,20 +62,20 @@ harmful_animal_detector/
       pip install ultralytics
       Replace default YOLOv8 model or fine-tune on harmful animal dataset if needed.
 
-Run the App
+4. **Run the App**
 
-      
       python app.py
-      Open in Browser
 
-Visit: http://localhost:5000
+5. **Open in Browser**
 
-📬 Email Setup
+      Visit: http://localhost:5000
+
+**📬 Email Setup**
       Edit utils/email_alert.py with your sender email credentials and recipient.
       
       Enable "less secure app access" or use an app password if using Gmail.
 
-📸 Supported Animals (Example)
+**📸 Supported Animals (Example)**
       Snake
       
       Lion
@@ -76,14 +87,14 @@ Visit: http://localhost:5000
       Crocodile
       (You can expand the model with more harmful animals)
    
-   🧪 Example Use Cases
+**🧪 Example Use Cases**
       Forest area surveillance
       
       Farm protection
       
       Wildlife monitoring
 
-🙌 Acknowledgements
+**🙌 Acknowledgements**
       Ultralytics YOLOv8
       
       OpenCV
