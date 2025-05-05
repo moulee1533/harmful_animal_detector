@@ -35,7 +35,7 @@ harmful_animal_detector/
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/harmful_animal_detector.git
+   git clone https://github.com/moulee1533/harmful_animal_detector.git
    cd harmful_animal_detector
    Install Requirements
 
@@ -43,6 +43,7 @@ harmful_animal_detector/
    pip install -r requirements.txt
    Download YOLOv8 Model
 
+**before install any requirements create a vitrual enviorment**
 
 
 **Install ultralytics:**
