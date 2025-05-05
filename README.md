@@ -47,40 +47,40 @@ harmful_animal_detector/
 
 **Install ultralytics:**
    
-   pip install ultralytics
-   Replace default YOLOv8 model or fine-tune on harmful animal dataset if needed.
+      pip install ultralytics
+      Replace default YOLOv8 model or fine-tune on harmful animal dataset if needed.
 
 Run the App
 
-   
-   python app.py
-   Open in Browser
+      
+      python app.py
+      Open in Browser
 
 Visit: http://localhost:5000
 
 📬 Email Setup
-   Edit utils/email_alert.py with your sender email credentials and recipient.
-   
-   Enable "less secure app access" or use an app password if using Gmail.
+      Edit utils/email_alert.py with your sender email credentials and recipient.
+      
+      Enable "less secure app access" or use an app password if using Gmail.
 
 📸 Supported Animals (Example)
-   Snake
-   
-   Lion
-   
-   Bear
-   
-   Tiger
-   
-   Crocodile
-   (You can expand the model with more harmful animals)
+      Snake
+      
+      Lion
+      
+      Bear
+      
+      Tiger
+      
+      Crocodile
+      (You can expand the model with more harmful animals)
    
    🧪 Example Use Cases
-   Forest area surveillance
-   
-   Farm protection
-   
-   Wildlife monitoring
+      Forest area surveillance
+      
+      Farm protection
+      
+      Wildlife monitoring
 
 🙌 Acknowledgements
       Ultralytics YOLOv8
