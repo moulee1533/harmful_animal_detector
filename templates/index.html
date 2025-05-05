@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Harmful Animal Detector</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #00b4d8, #90e0ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(144, 224, 239, 0.3);
+        }
+
+        .video-container {
+            position: relative;
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 180, 216, 0.4);
+            transition: transform 0.3s ease;
+            animation: pulse-shadow 2s infinite;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        button {
+            background: linear-gradient(45deg, #00b4d8, #90e0ef);
+            border: none;
+            padding: 12px 30px;
+            color: white;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.5);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes pulse-shadow {
+            0% { box-shadow: 0 0 20px rgba(0, 180, 216, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(0, 180, 216, 0.6); }
+            100% { box-shadow: 0 0 20px rgba(0, 180, 216, 0.4); }
+        }
+
+        .alert-banner {
+            position: fixed;
+            top: -100px;
+            left: 0;
+            right: 0;
+            background: #ff4d4d;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            transition: top 0.5s ease;
+            box-shadow: 0 2px 10px rgba(255, 77, 77, 0.3);
+        }
+
+        .alert-banner.show {
+            top: 0;
+        }
+
+        /* Add some techy elements */
+        .tech-border {
+            position: relative;
+            padding: 3px;
+            background: linear-gradient(45deg, #00b4d8, #90e0ef);
+            border-radius: 18px;
+        }
+
+        @media (max-width: 768px) {
+            img {
+                width: 100%;
+                max-width: 600px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+    <script>
+        const ws = new WebSocket('ws://' + location.host + '/ws');
+
+        ws.onmessage = function(event) {
+            if (event.data === "alert") {
+                console.log("Alert received, playing sound");
+                document.getElementById("alertSound").play().catch(function(error) {
+                    console.log("Error playing sound: " + error);
+                });
+                showAlertBanner();
+            }
+        };
+
+        function showAlertBanner() {
+            const banner = document.createElement('div');
+            banner.className = 'alert-banner show';
+            banner.innerHTML = '⚠️ DANGER DETECTED! ⚠️';
+            document.body.appendChild(banner);
+            
+            setTimeout(() => {
+                banner.remove();
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <h1>🦁 Live Animal Detection 🐍</h1>
+    
+    <div class="tech-border">
+        <div class="video-container">
+            <img src="{{ url_for('video_feed') }}" width="800" />
+        </div>
+    </div>
+
+    <audio id="alertSound" src="{{ url_for('static', filename='alert.mp3') }}" preload="auto" autoplay></audio>
+
+    <button onclick="document.getElementById('alertSound').play()">
+        🔈 Test Alert Sound 🧪
+    </button>
+</body>
+</html>
